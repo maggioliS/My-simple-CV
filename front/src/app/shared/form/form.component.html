@@ -1,0 +1,214 @@
+<h2 mat-dialog-title *ngIf="isUpdateMode">Update {{ form.get('nom').value }} {{ form.get('prenom').value }}</h2>
+<h2 mat-dialog-title *ngIf="!isUpdateMode">Create new CV</h2>
+
+<mat-dialog-content>
+  <form novalidate [formGroup]="form">
+
+    <p *ngIf="isUpdateMode">
+      <span style="width:100%">ID (disabled)</span><br/>
+      <span style="width:100%">{{model.id}}</span>
+    </p>
+
+    <table class="full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="full-width" [class.mgb15]="form.get('titre').dirty && form.get('titre').invalid">
+            <input matInput placeholder="titre du CV" formControlName="titre" minlength="2" required name="titre" />
+            <mat-error *ngIf="form.get('titre').dirty && form.get('titre').hasError('required')">
+              Title<strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="form.get('titre').dirty && form.get('titre').hasError('minlength')">
+              Title <strong>2 chars min</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width" [class.mgb15]="form.get('nom').dirty && form.get('nom').invalid">
+          <input matInput placeholder="nom" formControlName="nom" minlength="2" required name="nom" />
+          <mat-error *ngIf="form.get('nom').dirty && form.get('nom').hasError('required')">
+            First name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('nom').dirty && form.get('nom').hasError('minlength')">
+            First name is <strong>2 chars min</strong>
+          </mat-error>
+        </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="prenom" formControlName="prenom" minlength="2" required name="prenom" />
+            <mat-error *ngIf="form.get('prenom').dirty && form.get('prenom').hasError('required')">
+              Last name is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="form.get('prenom').dirty && form.get('prenom').hasError('minlength')">
+              Last name is <strong>2 chars min</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width" >
+            <p>Age </p><select formControlName="age" required name="age">
+              <option value="15"> 15 </option>
+              <option value="16"> 16 </option>
+              <option value="17"> 17 </option>
+              <option value="18"> 18 </option>
+              <option value="19"> 19 </option>
+              <option value="20"> 20 </option>
+              <option value="21"> 21 </option>
+              <option value="22"> 22 </option>
+              <option value="23"> 23 </option>
+              <option value="24"> 24 </option>
+              <option value="25"> 25 </option>
+              <option value="26"> 26 </option>
+              <option value="27"> 27 </option>
+              <option value="28"> 28 </option>
+              <option value="29"> 29 </option>
+              <option value="30"> 30 </option>
+              <option value="31"> 31 </option>
+              <option value="32"> 32 </option>
+              <option value="33"> 33 </option>
+              <option value="34"> 34 </option>
+              <option value="35"> 35 </option>
+              <option value="36"> 36 </option>
+              <option value="37"> 37 </option>
+              <option value="38"> 38 </option>
+              <option value="39"> 39 </option>
+              <option value="40"> 40 </option>
+            </select>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="photo (URL)" formControlName="photo" required name="photo" />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nationalite" formControlName="nationalite" required name="nationalite" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email" formControlName="email" required name="email" />
+        <mat-error *ngIf="form.get('email').dirty && form.get('email').hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.get('email').dirty && !form.get('email').hasError('required') && form.get('email').hasError('googleEmail')">
+          Invalid email <strong>(ex: name.firstname@gmail.com)</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p formGroupName="adresse">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="numero et rue" formControlName="street" name="street"/>
+      </mat-form-field>
+    </p>
+
+    <table class="full-width" cellspacing="0" formGroupName="address">
+      <tr>
+        <td>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="City" formControlName="city" name="city"/>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Postal Code" formControlName="postalCode" name="postalCode"/>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Phone (ex: 0612345678)" formControlName="telephone" required name="telephone" />
+        <mat-error *ngIf="form.get('telephone').dirty && form.get('telephone').hasError('required')">
+          Phone is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.get('telephone').dirty && form.get('telephone').hasError('pattern')">
+          Phone number must be <strong>10 digits</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-checkbox formControlName="permis" name="permis"></mat-checkbox>permis B
+    </p>
+    <p>
+      <mat-checkbox formControlName="vehicule" name="vehicule"></mat-checkbox>vehicule
+    </p>
+    <table width=100%>
+      <tr><td colspan="3">EXPERIENCES</td></tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="experience.s1.titre" name="experience.s1.titre"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Dates" formControlName="experience.s1.date" name="experience.s1.date"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Description" formControlName="experience.s1.description" name="experience.s1.description"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="experience.s2.titre" name="experience.s2.titre"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Dates" formControlName="experience.s2.date" name="experience.s2.date"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Description" formControlName="experience.s2.description" name="experience.s2.description"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="experience.s3.titre" name="experience.s3.titre"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Dates" formControlName="experience.s3.date" name="experience.s3.date"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Description" formControlName="experience.s3.description" name="experience.s3.description"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="experience.s4.titre" name="experience.s4.titre"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Dates" formControlName="experience.s4.date" name="experience.s4.date"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Description" formControlName="experience.s4.description" name="experience.s4.description"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="experience.s5.titre" name="experience.s5.titre"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Dates" formControlName="experience.s5.date" name="experience.s5.date"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Description" formControlName="experience.s5.description" name="experience.s5.description"/></mat-form-field></td>
+      </tr>
+
+
+      <tr><td colspan="3">FORMATIONS</td></tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="formation.s1.titre" name="formation.s1.titre"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Dates" formControlName="formation.s1.date" name="formation.s1.date"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Description" formControlName="formation.s1.description" name="formation.s1.description"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="formation.s2.titre" name="formation.s2.titre"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Dates" formControlName="formation.s2.date" name="formation.s2.date"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Description" formControlName="formation.s2.description" name="formation.s2.description"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="formation.s3.titre" name="formation.s3.titre"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Dates" formControlName="formation.s3.date" name="formation.s3.date"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Description" formControlName="formation.s3.description" name="formation.s3.description"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="formation.s4.titre" name="formation.s4.titre"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Dates" formControlName="formation.s4.date" name="formation.s4.date"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Description" formControlName="formation.s4.description" name="formation.s4.description"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="formation.s5.titre" name="formation.s5.titre"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Dates" formControlName="formation.s5.date" name="formation.s5.date"/></mat-form-field></td>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Description" formControlName="formation.s5.description" name="formation.s5.description"/></mat-form-field></td>
+      </tr>
+
+
+      <tr><td colspan="3">LOISIRS</td></tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="hobbie.s1.titre" name="hobbie.s1.titre"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="hobbie.s2.titre" name="hobbie.s2.titre"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="hobbie.s3.titre" name="hobbie.s3.titre"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="hobbie.s4.titre" name="hobbie.s4.titre"/></mat-form-field></td>
+      </tr>
+      <tr>
+        <td><mat-form-field class="full-width"><input matInput placeholder="Titre" formControlName="hobbie.s5.titre" name="hobbie.s5.titre"/></mat-form-field></td>
+      </tr>
+    </table>
+  </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="cancel()">Cancel</button>
+  <button mat-button color="primary" type="submit" (click)="submit(form.value)" [disabled]="form.invalid">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,26 @@
+section {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-card {
+  width: calc(70% - 70px);
+  height: calc(70% - 70px);
+}
+
+.arrondie {
+  -moz-border-radius:7px;
+  -webkit-border-radius:7px;
+  border-radius:7px;
+}
+.coin {
+  background-color:#e6e6fa;
+  border:1px solid #e6e6fb;
+  padding:5px;
+  /*arrondir les coins en haut à gauche et en bas à droite*/
+  -moz-border-radius:10px 0;
+  -webkit-border-radius:10px 0;
+  border-radius:10px 0;
+}

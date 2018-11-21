@@ -1,0 +1,112 @@
+<section>
+  <mat-card>
+  <table align="center" width=90%>
+    <tr>
+      <td align="left"><h6>{{person.nom}} {{person.prenom}}<br />
+      {{person.age}} ans <br/>
+        {{person.email}} <br/>
+        <span *ngIf="permis">Permis B</span><br/>
+        <span *ngIf="vehicule">Vehicule </span><br/>
+        <span *ngIf="haveNationalite">Nationalite : {{person.nationalite}} </span><br/>
+      {{person.adresse.street}}<br/>
+      {{person.adresse.postalCode}} {{person.adresse.city}}<br/>
+      </h6></td>
+      <td align="right"><img width="100px" src="{{person.photo}}" class="arrondie"/></td>
+    </tr ><td colspan="2" align="center">
+    <h1>
+      {{person.titre}}
+    </h1></td>
+    <tr><br/></tr>
+    <tr>
+      <td colspan="2" align="center">
+        <table width=100% class="coin">
+        <tr>
+          <td align="center"><b><h2>EXPERIENCES</h2></b> </td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <div *ngIf="es1"><b>{{person.experience.s1.titre}} </b>| {{person.experience.s1.date}} : {{person.experience.s1.description}}<br/></div>
+      <div *ngIf="es2"><b>{{person.experience.s2.titre}} </b>| {{person.experience.s2.date}} : {{person.experience.s2.description}}<br/></div>
+      <div *ngIf="es3"><b>{{person.experience.s3.titre}} </b>| {{person.experience.s3.date}} : {{person.experience.s3.description}}<br/></div>
+      <div *ngIf="es4"><b>{{person.experience.s4.titre}} </b>| {{person.experience.s4.date}} : {{person.experience.s4.description}}<br/></div>
+      <div *ngIf="es5"><b>{{person.experience.s5.titre}} </b>| {{person.experience.s5.date}} : {{person.experience.s5.description}}<br/></div>
+      <div *ngIf="es6"><b>{{person.experience.s6.titre}} </b>| {{person.experience.s6.date}} : {{person.experience.s6.description}}<br/></div>
+      <div *ngIf="es7"><b>{{person.experience.s7.titre}} </b>| {{person.experience.s7.date}} : {{person.experience.s7.description}}<br/></div>
+      <div *ngIf="es8"><b>{{person.experience.s8.titre}} </b>| {{person.experience.s8.date}} : {{person.experience.s8.description}}<br/></div>
+      <div *ngIf="es9"><b>{{person.experience.s9.titre}} </b>| {{person.experience.s9.date}} : {{person.experience.s9.description}}<br/></div>
+      <div *ngIf="es10"><b>{{person.experience.s10.titre}} </b>| {{person.experience.s10.date}} : {{person.experience.s10.description}}<br/></div>
+    </tr>
+    <tr><br/></tr>
+    <tr>
+      <td colspan="2" align="center">
+        <table width=100% class="coin">
+          <tr>
+            <td align="center"><b><h2>FORMATIONS</h2></b> </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <div *ngIf="fs1"> <b>{{person.formation.s1.titre}} </b>| {{person.formation.s1.date}} : {{person.formation.s1.description}}<br/></div>
+      <div *ngIf="fs2"><b>{{person.formation.s2.titre}} </b>| {{person.formation.s2.date}} : {{person.formation.s2.description}}<br/></div>
+      <div *ngIf="fs3"><b>{{person.formation.s3.titre}} </b>| {{person.formation.s3.date}} : {{person.formation.s3.description}}<br/></div>
+      <div *ngIf="fs4"><b>{{person.formation.s4.titre}} </b>| {{person.formation.s4.date}} : {{person.formation.s4.description}}<br/></div>
+      <div *ngIf="fs5"><b>{{person.formation.s5.titre}} </b>| {{person.formation.s5.date}} : {{person.formation.s5.description}}<br/></div>
+      <div *ngIf="fs6"><b>{{person.formation.s6.titre}} </b>| {{person.formation.s6.date}} : {{person.formation.s6.description}}<br/></div>
+      <div *ngIf="fs7"><b>{{person.formation.s7.titre}} </b>| {{person.formation.s7.date}} : {{person.formation.s7.description}}<br/></div>
+      <div *ngIf="fs8"><b>{{person.formation.s8.titre}} </b>| {{person.formation.s8.date}} : {{person.formation.s8.description}}<br/></div>
+      <div *ngIf="fs9"><b>{{person.formation.s9.titre}} </b>| {{person.formation.s9.date}} : {{person.formation.s9.description}}<br/></div>
+      <div *ngIf="fs10"><b>{{person.formation.s10.titre}} </b>| {{person.formation.s10.date}} : {{person.formation.s10.description}}<br/></div>
+    </tr>
+    <tr><br/></tr>
+    <tr>
+      <td colspan="2" align="center">
+        <table width=100% class="coin">
+          <tr>
+            <td align="center"><b><h2>LOISIRS</h2></b> </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <table width=70%>
+          <tr>
+            <td>
+              <div *ngIf="hs1"><b>{{person.hobbie.s1.titre}} </b><br/></div>
+              <div *ngIf="hs3"><b>{{person.hobbie.s3.titre}} </b><br/></div>
+              <div *ngIf="hs5"><b>{{person.hobbie.s5.titre}} </b><br/></div>
+              <div *ngIf="hs7"><b>{{person.hobbie.s7.titre}} </b><br/></div>
+              <div *ngIf="hs9"><b>{{person.hobbie.s9.titre}} </b><br/></div>
+            </td>
+            <td>
+              <div *ngIf="hs2"><b>{{person.hobbie.s2.titre}} </b><br/></div>
+              <div *ngIf="hs4"><b>{{person.hobbie.s4.titre}} </b><br/></div>
+              <div *ngIf="hs6"><b>{{person.hobbie.s6.titre}} </b><br/></div>
+              <div *ngIf="hs8"><b>{{person.hobbie.s8.titre}} </b><br/></div>
+              <div *ngIf="hs10"><b>{{person.hobbie.s10.titre}} </b><br/></div>
+            </td>
+          </tr>
+        </table>
+      </td>
+
+
+
+
+
+    </tr>
+  </table>
+
+
+
+
+
+  </mat-card>
+<div>
+
+</div>
+
+</section>
+
