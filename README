@@ -1,4 +1,4 @@
-git clone https://github.com/maggioliS/CV-Angular.git My-simple-cv
+git clone https://github.com/maggioliS/My-simple-CV.git
 Ensuite faire un yarn install dans le dossier front et back
 Puis Créer une BDD avec le nom : cvdb
 Créer une collection : cvs
